@@ -1,0 +1,13 @@
+<launch>
+  <param name="/use_sim_time" value="true" />
+  <arg name="world_name" default="labyrinth"/>
+
+  <!-- start world -->
+  <node name="gazebo" pkg="gazebo_ros" type="gzserver"
+   args="--verbose -e ode /home/zick/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/worlds/turtlebot3_world.world" respawn="false" output="screen">
+    <param name="use_sim_time" value="true"/>
+   </node>
+
+  <!-- include our robots -->
+  <include file="$(find multiple_turtlebots)/launch/multiple_robots.launch"/>
+</launch>
